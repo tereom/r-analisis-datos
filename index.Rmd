@@ -1,0 +1,26 @@
+--- 
+title: "Análisis de Datos con R"
+author: "Teresa Ortiz"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+bibliography: [book.bib]
+documentclass: book
+biblio-style: apalike
+link-citations: yes
+description: "Notas y material para taller de introducción al análisis de datos con R"
+---
+
+# Información del curso {-}
+
+Notas y material para taller de introducción al análisis de datos con R
+
+* Notas: <https://analisis-datos-r.netlify.app/>
+
+* Dudas: <teresa.ortiz.mancera@gmail.com>
+
+### Software {-}
+
+- [R](https://cran.r-project.org) Sitio de R (CRAN)  
+- [RStudio](https://www.rstudio.com/products/RStudio/) Interfaz gráfica para trabajar en R.  
+- [Recursos para aprender R](https://education.rstudio.com/)

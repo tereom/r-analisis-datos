@@ -1,0 +1,7 @@
+book_filename: "curso-R"
+delete_merged_file: true
+language:
+  ui:
+    chapter_name: "Sesión "
+before_chapter_script: ["setup-rmd.R"]
+new_session: yes

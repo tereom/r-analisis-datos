@@ -1,0 +1,10 @@
+bookdown::gitbook:
+  css: style.css
+  config:
+    toc:
+      before: |
+        <li><a href="./">Aanálisis de Datos con R</a></li>
+      after: |
+        <li><a href="https://github.com/tereom" target="blank">Repositorio en Github</a></li>
+    download: ["epub"]
+
