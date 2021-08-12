@@ -134,4 +134,3 @@ En particular es conveniente leer la [guía de estilo](http://adv-r.had.co.nz/St
 #rstats en Twitter.  
 * Para aprovechar la funcionalidad de [RStudio](https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf).
 
-

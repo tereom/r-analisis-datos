@@ -1,0 +1,20 @@
+# Prepara tu espacio
+
+1. Instala [R](https://cran.r-project.org) y [RStudio](https://www.rstudio.com/products/rstudio/download/) en tu computadora.
+
+2. Instala la colección de paquetes tidyverse (`install.packages("tidyverse")`), 
+el paquete remotes(`install.packages("remotes")`) y 
+el paquete usethis (`install.packages("usethis")`).
+
+3. Descarga el material para seguir el taller y hacer los ejercicios.
+
+```{r, eval=FALSE}
+library(usethis)
+library(remotes)
+install_github("tereom/estcomp")
+use_course("https://github.com/ComunidadBioInfo/minicurso_ene_2021/raw/main/_material.zip")
+```
+
+4. ¡Listos para visualizar y arrear datos!
+
+![Artwork by \@allison_horst.](https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/rstats-artwork/dplyr_wrangling.png)

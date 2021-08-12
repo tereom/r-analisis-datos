@@ -1,0 +1,23 @@
+---
+output: html_document
+params:
+ estado: "01"
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(estcomp)
+
+codigo_edo <- params$estado
+df_edo <- df_edu %>% 
+  filter(state_code == codigo_edo)
+```
+
+# Estado de `r df_edo$state_name[1]`
+
+```{r plot_ggplot}
+df_edu %>% 
+  filter(state_code == codigo_edo, sex == "Total") %>% 
+  ggplot(aes(x = pop_15, y = schoolyrs)) +
+    geom_point() 
+```
