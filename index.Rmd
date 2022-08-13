@@ -19,7 +19,9 @@ Notas y material para taller de introducción al análisis de datos con R
 
 * Dudas: <teresa.ortiz.mancera@gmail.com>
 
-La referencia principa de este material es el libro [R for Data Science](https://r4ds.had.co.nz/) de Hadley Wickham y Garret Grolemund.
+* Repositorio: <https://github.com/tereom/r-analisis-datos/>
+
+La referencia principal de este material es el libro [R for Data Science](https://r4ds.had.co.nz/) de Hadley Wickham y Garret Grolemund.
 
 </br>
 

@@ -196,8 +196,8 @@ Podemos darles formato adicional con la función `kable()` del paquete `knitr`.
 
 ```{r}
 library(knitr)
-filter(df_edu, state_code == "09", sex == "Total") %>% 
-  select(municipio_name, sex, pop_15, schoolyrs) %>% 
+filter(df_edu, state_code == "09", sex == "Total") |> 
+  select(municipio_name, sex, pop_15, schoolyrs) |> 
   kable()
 ```
 

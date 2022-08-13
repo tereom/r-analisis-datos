@@ -175,11 +175,11 @@ fácilmente una gráfica donde podemos comparar las diferencias en las
 frecuencias. 
 
 ```{r}
-pm25_2019_tidy %>% 
+pm25_2019_tidy |> 
     mutate(
         missing = is.na(measurement), 
         station = reorder(station, missing, sum)
-        ) %>% 
+        ) |> 
     ggplot(aes(x = date, y = hour, fill = is.na(measurement))) +
     geom_raster(alpha = 0.8) +
     facet_wrap(~ station) +
@@ -222,8 +222,8 @@ Con los datos limpios es facil hacer manipulaciones y grfiacs, ¿cómo habrían
 hecho la siguiente gráfica antes de la limpieza?
 
 ```{r}
-df_edu_cdmx <- df_edu_tidy %>% 
-    filter(state_abbr == "CDMX", sex != "Total", grade != "other") %>% 
+df_edu_cdmx <- df_edu_tidy |> 
+    filter(state_abbr == "CDMX", sex != "Total", grade != "other") |> 
     mutate(municipio_name = reorder(municipio_name, percent, last))
 
 ggplot(df_edu_cdmx, aes(x = grade, 
@@ -245,8 +245,8 @@ alumnos de tercero a sexto de primaria y a los alumnos de secundaria del país e
 
 ```{r}
 data("enlacep_2013")
-enlacep_sub_2013 <- enlacep_2013 %>% 
-    select(CVE_ENT:PUNT_FCE_6) %>% 
+enlacep_sub_2013 <- enlacep_2013 |> 
+    select(CVE_ENT:PUNT_FCE_6) |> 
     sample_n(1000)
 glimpse(enlacep_sub_2013)
 ```
@@ -287,7 +287,7 @@ enlacep_tidy <- separate(data = enlacep_long, col = AREA_GRADO,
 enlacep_tidy
 
 # creamos un mejor código de área
-enlacep_tidy <- enlacep_tidy %>% 
+enlacep_tidy <- enlacep_tidy |> 
     mutate(
         AREA = substr(AREA, 6, 8),
         GRADO = as.numeric(GRADO)
@@ -304,7 +304,7 @@ coincida del inicio de una variable.
 ```{r}
 pivot_longer(enlacep_sub_2013, cols = contains("PUNT"), 
   names_to = c("AREA_GRADO"), values_to = "PUNTAJE", 
-  names_prefix = "PUNT_") %>% 
+  names_prefix = "PUNT_") |> 
   glimpse()
 ```
 
@@ -315,7 +315,7 @@ en este caso `names_to` consiste en un vector con más de una entrada y
 ```{r}
 pivot_longer(enlacep_sub_2013, cols = contains("PUNT"), 
   names_to = c("AREA", "GRADO"), values_to = "PUNTAJE", names_prefix = "PUNT_", 
-  names_sep = "_") %>% 
+  names_sep = "_") |> 
   glimpse()
 ```
 
@@ -333,7 +333,7 @@ columnas.
 ```{r enlace_prueba, eval=FALSE}
 pivot_longer(enlacep_sub_2013, cols = contains("PUNT"), 
   names_to = c("AREA", "GRADO"), values_to = "PUNTAJE", names_prefix = "PUNT_", 
-  names_sep = "_", names_ptypes = list(GRADO = integer())) %>% 
+  names_sep = "_", names_ptypes = list(GRADO = integer())) |> 
   glimpse()
 ```
 
@@ -370,11 +370,11 @@ fertility_long
 Podemos crear algunas variables adicionales.
 
 ```{r}
-fertility_vars <- fertility_long %>% 
+fertility_vars <- fertility_long |> 
     mutate(
         state_code = str_sub(state, 1, 2), 
         state_name = str_sub(state, 4)
-        ) %>%
+        ) |>
     select(-state)
 fertility_vars
 ```
@@ -403,8 +403,8 @@ Y podemos mejorar los nombres de las columnas, una opción rápida es usar el pa
 
 ```{r, message=FALSE, warning=FALSE}
 library(janitor)
-fertility_tidy %>% 
-    clean_names() %>% 
+fertility_tidy |> 
+    clean_names() |> 
     glimpse()
 ```
 
@@ -496,12 +496,12 @@ library(readxl)
 rama <- map_df(paths, read_excel, .id = "FILENAME")
 
 # eliminamos la basura del id
-rama <- rama %>%
-  mutate(PARAMETRO = str_remove(FILENAME, "2019") %>% str_remove(".xls")) %>%
+rama <- rama |>
+  mutate(PARAMETRO = str_remove(FILENAME, "2019") |> str_remove(".xls")) |>
   select(PARAMETRO, FECHA:AJU)
 # y apilamos para tener una columna por estación
-rama_tidy <- rama %>%
-    pivot_longer(names_to = "estacion", values_to = "valor", ACO:AJU) %>% 
+rama_tidy <- rama |>
+    pivot_longer(names_to = "estacion", values_to = "valor", ACO:AJU) |> 
     mutate(valor = ifelse(-99, NA, valor))
 rama_tidy
 ```

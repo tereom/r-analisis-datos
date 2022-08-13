@@ -12,7 +12,7 @@ el paquete usethis (`install.packages("usethis")`).
 library(usethis)
 library(remotes)
 install_github("tereom/estcomp")
-use_course("https://github.com/ComunidadBioInfo/minicurso_ene_2021/raw/main/_material.zip")
+1use_course("https://github.com/ComunidadBioInfo/minicurso_ene_2021/raw/main/_material.zip")
 ```
 
 4. ¡Listos para visualizar y arrear datos!

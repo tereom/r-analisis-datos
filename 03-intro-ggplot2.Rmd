@@ -175,13 +175,13 @@ tipo de casilla:
 
 ```{r, fig.width = 5, fig.height = 8}
 # Veremos como manipular datos en las próximas clases
-election_region_2012 <- election_2012 %>% 
-    group_by(region, section_type) %>% 
-    summarise_at(vars(pri_pvem:total), sum) %>% 
-    mutate_at(vars(pri_pvem:otros), .funs = ~ 100 * ./total) %>% 
-    ungroup() %>% 
-    mutate(region = reorder(region, pri_pvem)) %>%
-    gather(party, pct_votes, pri_pvem:otros) %>% 
+election_region_2012 <- election_2012 |> 
+    group_by(region, section_type) |> 
+    summarise_at(vars(pri_pvem:total), sum) |> 
+    mutate_at(vars(pri_pvem:otros), .funs = ~ 100 * ./total) |> 
+    ungroup() |> 
+    mutate(region = reorder(region, pri_pvem)) |>
+    gather(party, pct_votes, pri_pvem:otros) |> 
     filter(!is.na(section_type))
 
 ggplot(election_region_2012, aes(x = reorder(party, pct_votes), 
@@ -237,7 +237,7 @@ Supongamos que queremos ver la tendencia del nombre "John", para ello debemos
 generar un subconjunto de la base de datos. ¿Qué ocurre en la siguiente gráfica?
 
 ```{r,  fig.width = 5, fig.height = 3}
-babynames_John <- filter(babynames, name == "Teresa")
+babynames_John <- filter(babynames, name == "John")
 ggplot(babynames_John, aes(x = year, y = prop)) +
   geom_line()
 ```

@@ -211,12 +211,12 @@ en la carpeta *munge* que se llame *02-agregar.R*, por ejemplo. Agrega el
 siguiente código:
 
 ```{r, eval = FALSE}
-primera <- letras %>% 
-    group_by(FirstLetter) %>% 
-    count() %>% arrange(desc(n))
-segunda <- letras %>% 
-    group_by(SecondLetter) %>% 
-    count() %>% arrange(desc(n))
+primera <- letras |> 
+    group_by(FirstLetter) |> 
+    count() |> arrange(desc(n))
+segunda <- letras |> 
+    group_by(SecondLetter) |> 
+    count() |> arrange(desc(n))
 ```
 
 Ahora reinicia R. Vuelve a hacer `load.project()` y corre por ejemplo:
@@ -253,8 +253,8 @@ Ahora crea dos archivos nuevos en el directorio raíz de tu proyecto,
 que puedes llamar: *1_graficas.R* y *2_resumenes.R*, por ejemplo.
 
 ```{r, eval=FALSE}
-dos_letras <- left_join(primera %>% rename(letra = FirstLetter),
-                        segunda %>% rename(letra = SecondLetter),
+dos_letras <- left_join(primera |> rename(letra = FirstLetter),
+                        segunda |> rename(letra = SecondLetter),
                         by = "letra")
 grafica <- ggplot(dos_letras, aes(x = n.x, y = n.y, label = letra)) + 
     geom_text() + xlab('Primera letra') +
@@ -266,9 +266,9 @@ ggsave(grafica, 'graphs/frecuencias.pdf')
 En el archivo resúmenes puedes poner por ejemplo:
 
 ```{r, eval=FALSE}
-resumen <- dos_letras %>% 
-    gather(orden, frecuencia, -letra) %>%
-    group_by(orden) %>%
+resumen <- dos_letras |> 
+    gather(orden, frecuencia, -letra) |>
+    group_by(orden) |>
     summarise( min = min(frecuencia), max = max(frecuencia))
 resumen
 write_csv(resumen, 'reports/tabla_resumen.csv')

@@ -453,16 +453,16 @@ Usaremos `map` para ajustar un modelo lineal a subconjuntos de los datos
 `mtcars` determinados por el cilindraje del motor.
 
 ```{r}
-models <- mtcars %>% 
-  split(.$cyl) %>% 
+models <- mtcars |> 
+  split(.$cyl) |> 
   map(function(df) lm(mpg ~ wt, data = df))
 ```
 
 Podemos usar la notación `.` para hacer código más corto:
 
 ```{r}
-models <- mtcars %>% 
-  split(.$cyl) %>% 
+models <- mtcars |> 
+  split(.$cyl) |> 
   map(~lm(mpg ~ wt, data = .))
 
 models

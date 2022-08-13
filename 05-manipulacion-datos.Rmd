@@ -407,12 +407,12 @@ pero esto resulta poco práctico porque: 1) almacenamos en el mismo objeto
 sobreescribiendo ó 2) terminamos con muchos objetos con nombres poco
 significativos.
 
-El operador *Forward Pipe* (`%>%`) cambia el orden en que se asignan los 
+El operador *Forward Pipe* (`|>`) cambia el orden en que se asignan los 
 parámetros, de manera que un parámetro que precede a la función es enviado
 ("piped")  a la función:
 
-* `x %>% f(y)` se vuelve `f(x, y)`,   
-* `x %>% f(y) %>% g(z)` se vuelve `g(f(x, y), z)`. 
+* `x |> f(y)` se vuelve `f(x, y)`,   
+* `x |> f(y) |> g(z)` se vuelve `g(f(x, y), z)`. 
 
 Es así que podemos reescribir el código para poder leer las 
 operaciones que vamos aplicando de izquierda a derecha y de arriba hacia abajo.
@@ -420,9 +420,9 @@ operaciones que vamos aplicando de izquierda a derecha y de arriba hacia abajo.
 Veamos como cambia el código del ejemplo:
 
 ```{r}
-election_2012 %>% 
-    filter(!is.na(section_type)) %>% 
-    group_by(region, section_type) %>% 
+election_2012 |> 
+    filter(!is.na(section_type)) |> 
+    group_by(region, section_type) |> 
     summarise(
         n = n(), 
         pri_pvem = sum(pri_pvem), 
@@ -431,9 +431,9 @@ election_2012 %>%
         ) 
 ```
 
-podemos leer %>% como "_después_".
+podemos leer |> como "_después_".
 
-**Tip:** Un atajo para producir el operador pipeline `%>%` es 
+**Tip:** Un atajo para producir el operador pipeline `|>` es 
 shift + ctrl/cmd + M 
 
 ![](img/manicule2.jpg) Siguiendo con los datos `election_2012`, ¿Qué estados
@@ -441,15 +441,15 @@ tienen la mayor participación (esto es del total de votantes en la lista nomina
 que porcentaje asistió a votar)? Tip: debes eliminar las casillas especiales  pues la lista nominal (`ln`) no está definida.
 
 ```{r, echo=FALSE, eval=FALSE}
-election_2012 %>% 
-    filter(polling_type != "S") %>% 
-    group_by(state_abbr) %>% 
+election_2012 |> 
+    filter(polling_type != "S") |> 
+    group_by(state_abbr) |> 
     summarise(
         n = n(), 
         total = sum(total), 
         nominal_list = sum(nominal_list)
-        ) %>% 
-    mutate(part = 100 * total / nominal_list) %>% 
+        ) |> 
+    mutate(part = 100 * total / nominal_list) |> 
     arrange(desc(part))
 ```
 
@@ -462,10 +462,10 @@ y `mutate()`.
 Veamos un ejemplo:
 
 ```{r}
-z_prd_pt_mc_state <- election_2012 %>%
-    filter(total > 50, !is.na(section_type)) %>% 
-    mutate(prd_pt_mc_pct = prd_pt_mc / total) %>% 
-    group_by(state_abbr) %>% 
+z_prd_pt_mc_state <- election_2012 |>
+    filter(total > 50, !is.na(section_type)) |> 
+    mutate(prd_pt_mc_pct = prd_pt_mc / total) |> 
+    group_by(state_abbr) |> 
     mutate(
         n = n(),
         sd_prd_pt_mc = sd(prd_pt_mc_pct),
@@ -528,13 +528,13 @@ son `mxstate.map`.
 
 ```{r, fig.width=4.5, fig.height=4, eval=FALSE}
 data(election_sub_2012)
-election_2012_state <- election_2012 %>%
-    group_by(state_code) %>%
+election_2012_state <- election_2012 |>
+    group_by(state_code) |>
     summarise(
         pri_pvem = 100 * sum(pri_pvem) / sum(total),
         pan = 100 * sum(pan) / sum(total),
         prd_pt_mc = 100 * sum(prd_pt_mc) / sum(total)
-    ) %>%
+    ) |>
     mutate(winner = case_when(
         pri_pvem > pan & pri_pvem > prd_pt_mc ~ "pri_pvem",
         pan > pri_pvem & pan > prd_pt_mc ~ "pan",
@@ -542,7 +542,7 @@ election_2012_state <- election_2012 %>%
         winner_pct = pmax(pri_pvem, pan, prd_pt_mc))
 
 
-election_map <- mxstate.map %>% 
+election_map <- mxstate.map |> 
     left_join(election_2012_state, by = c("region" = "state_code")) 
 
 ggplot(election_map, aes(long, lat, group = group)) +
@@ -565,10 +565,10 @@ map_edo <- ggplot(election_map, aes(long, lat, group = group)) +
         "pri_pvem" = "#00CD66")) + 
     theme_void()
 
-election_hexbinmap <- mxhexbin.map %>% 
+election_hexbinmap <- mxhexbin.map |> 
     left_join(election_2012_state, by = c("region" = "state_code")) 
-state_labels_map <- mxhexbin.map %>% 
-    group_by(state_abbr) %>% 
+state_labels_map <- mxhexbin.map |> 
+    group_by(state_abbr) |> 
     summarise(long = mean(long), lat = mean(lat), group = first(group))
 
 hexbinmap_edo <- ggplot(election_hexbinmap, aes(long, lat, 
@@ -594,9 +594,9 @@ de la población casada a total (mayores de 12 años).
 library(viridis)
 library(scales)
 
-df_marital %>% 
-    filter(age_group == "Total", sex == "Total") %>% 
-    right_join(mxmunicipio.map) %>% 
+df_marital |> 
+    filter(age_group == "Total", sex == "Total") |> 
+    right_join(mxmunicipio.map) |> 
     ggplot(aes(long, lat, group = group)) +
     geom_polygon(aes(fill = separated), color = "#666666", size = .02) +
     coord_map() +
