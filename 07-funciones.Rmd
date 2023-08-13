@@ -454,7 +454,7 @@ Usaremos `map` para ajustar un modelo lineal a subconjuntos de los datos
 
 ```{r}
 models <- mtcars |> 
-  split(.$cyl) |> 
+  group_split(cyl) |> 
   map(function(df) lm(mpg ~ wt, data = df))
 ```
 
@@ -462,7 +462,7 @@ Podemos usar la notación `.` para hacer código más corto:
 
 ```{r}
 models <- mtcars |> 
-  split(.$cyl) |> 
+  group_split(cyl) |> 
   map(~lm(mpg ~ wt, data = .))
 
 models
@@ -511,6 +511,6 @@ airquality$Wind.cat <- cut(airquality$Wind, breaks = c(1.5, 9, 12, 21))
 ```
 
 
-Puedes descargar un acordeón de purrr [aquí](https://github.com/rstudio/cheatsheets/raw/master/purrr.pdf).
+Puedes descargar un acordeón de purrr [aquí](https://rstudio.github.io/cheatsheets/purrr.pdf).
 
 

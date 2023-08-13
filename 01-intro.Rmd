@@ -4,46 +4,50 @@ En este primer módulo aprenderemos a usar R para análisis de datos.
 
 ## ¿Qué es R? {-}
 
-* R es un lenguaje de programación y un ambiente de cómputo estadístico
+* R es un lenguaje de programación y un ambiente de cómputo estadístico.
 * R es software libre (no dice qué puedes o no hacer con el software), de código 
 abierto (todo el código de R se puede inspeccionar - y se inspecciona).
 * Cuando instalamos R, instala la base de R. Mucha de la funcionalidad adicional 
 está en **paquetes** (conjunto de funciones y datos documentados) que la 
 comunidad contribuye.
 
-#### ¿Por qué R? {-}
+#### ¿Por qué R para análisis de datos? {-}
 
-* R funciona en casi todas las plataformas (Mac, Windows, Linux).
-* R está pensado y es eficiente para las tareas usuales de análisis.
-* R es un lenguaje de programación completo.
-* R promueve la investigación reproducible.
-* R está actualizado gracias a que tiene una activa comunidad. Solo en CRAN hay 
-más de $15,000$ paquetes (funcionalidad adicional de R creadas creada por la 
-comunidad).
-* R se puede combinar con otras herramientas (sql, spark, python,...).
-* R tiene capacidades gráficas muy sofisticadas.
-* R es popular ([Descargas de paquetes R](https://jozef.io/r921-happy-birthday-r/#bigger---how-did-downloads-of-r-packages-grow)).
+**Rutinas y funciones estadísticas** 
+
+- R fue desarrollado por expertos en estadística, por lo que tiene una adherencia rigurosa a la teoría estadística^[https://www.r-project.org/foundation/board.html].  
+- R es un proyecto activo al que constantemente se agrega funcionalidad para mejorar la implementación de metodologías e incluir los avances en el área de la estadística.
+
+**Rendimiento** 
+
+- R tiene  un desempeño computacional comparable o superior a otros lenguajes de programación en las rutinas estadísticas y en las tareas típicas de análisis de datos^[https://h2oai.github.io/db-benchmark/ ]: manipulación (filtrado, selección, agregación y transformación de datos), tabulación, y visualización. El alto desempeño se debe a que, al igual que otros lenguajes como Python y Julia, R utiliza bibliotecas y rutinas optimizadas, como LAPACK y BLAS^[R Core Team. (2023). R Internals: A guide to the internal structures of R and coding standards for the core team. R Project. https://cran.r-project.org/doc/manuals/r-release/R-ints.html] que están escritas en lenguajes de bajo nivel como Fortran y C. Estas implementaciones altamente eficientes permiten realizar operaciones de álgebra lineal y otras tareas computacionales de manera rápida y optimizada.    
+- Adicionalmente, R ofrece la capacidad de aprovechar el poder de procesamiento de sistemas con múltiples núcleos, con los que cuenta la mayor parte de los equipos actualmente. Este procesamiento en paralelo permite distribuir las tareas de manera eficiente entre los recursos disponibles y acelerar el tiempo de ejecución de los cálculos intensivos.
+
+**Accesibilidad y reproducibilidad**
+
+- R es gratuito y de código abierto, lo que lo hace accesible y transparente.  
+- R fomenta la reproducibilidad, al ser un lenguaje de código, R permite la documentación sistemática y clara de todos los pasos realizados durante el desarrollo de un proyecto.
 
 ## R: primeros pasos  {-}
 
 Para comenzar se debe descargar [R](https://cran.r-project.org), esta descarga 
 incluye R básico y un editor de textos para escribir código. Después de
 descargar R se recomienda descargar 
-[RStudio](https://www.rstudio.com/products/rstudio/download/) (gratis y libre).
+[RStudio](https://posit.co/download/rstudio-desktop/) (gratis y libre).
 
 **Rstudio** es un ambiente de desarrollo integrado para R: incluye una consola, 
 un editor de texto y un conjunto de herramientas para administrar el espacio de
 trabajo cuando se utiliza R. 
 
 Rstudio funciona como aplicación usual que se puede instalar. Pero también funciona
-como aplicación web, donde R corre en un servidor, y nosotros tenemos acceso a través 
+como aplicación web ([posit.cloud](https://posit.cloud/)), donde R corre en un servidor, y nosotros tenemos acceso a través 
 de un browser como Chrome o Safari. Esta es una manera buena de correr R, pues
 
 - Tenemos acceso a máquinas más grandes
 - Es más fácil garantizar reproducibilidad, y es más fácil compartir resultados
 - Menos dificultades para instalar paquetes de R
 
-Ahora probamos usar rstudio cloud, donde haremos unos cálculos simples en R.
+Ahora probamos usar posit.cloud, donde haremos unos cálculos simples en R.
 
 ## R en análisis de datos {-}
 

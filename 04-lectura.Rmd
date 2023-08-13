@@ -28,5 +28,3 @@ women_school <- read_excel("datos/Years_in_school_women_25_plus.xlsx",
                            sheet = "Data")
 women_school
 ```
-
-![](img/Xolbio1.png){width=20%}

@@ -259,7 +259,7 @@ en herramientas para hacer transformaciones de manera eficiente.
 * Documentación con ejemplos en la página de 
 [ggplot2](http://ggplot2.tidyverse.org/).
 * Otro recurso muy útil es el 
-[acordeón de ggplot](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf).  
+[acordeón de ggplot](https://rstudio.github.io/cheatsheets/data-visualization.pdf).  
 * La teoría detrás de ggplot2 se explica en el libro de ggplot2 [@wickham2009],  
 * Google, [stackoverflow](https://stackoverflow.com/questions/tagged/ggplot2) y
 [RStudio Community](https://community.rstudio.com/tags/ggplot2) tienen un *tag* 

@@ -1,4 +1,4 @@
-# Transformación y agrupacion de datos 
+# Transformacion y agrupacion de datos 
 
 En esta sección mostraremos herramientas de transformación y agrupación de 
 datos (arreo de datos!). Trataremos los siguientes puntos:
@@ -307,7 +307,7 @@ summarise(df_ej, promedio = mean(estatura))
 ![](img/manicule2.jpg) Calcula la población total, indígena y afromexicana a 
 total.
 
-```{r}
+```{r, eval = FALSE, echo=FALSE}
 summarise(df_mxmunicipio, indigeonous = sum(indigenous), 
     afromexican = sum(afromexican))
 ```
@@ -348,7 +348,7 @@ by_sexo
 y después operamos sobre cada grupo, creando un resumen a nivel grupo y uniendo
 los subconjuntos en una base nueva:
 
-```{r, eval = FALSE, echo = FALSE}
+```{r}
 summarise(by_sexo, promedio = mean(estatura))
 ```
 
