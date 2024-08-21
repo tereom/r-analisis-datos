@@ -1,4 +1,9 @@
-# Prepara tu espacio
+# Prepara tu espacio {-}
+
+**Opción 1:** Utiliza la sesión de [posit.cloud](https://posit.cloud/) asignada al taller.
+
+
+**Opción 2:** 
 
 1. Instala [R](https://cran.r-project.org) y [RStudio](https://www.rstudio.com/products/rstudio/download/) en tu computadora.
 
@@ -12,7 +17,7 @@ el paquete usethis (`install.packages("usethis")`).
 library(usethis)
 library(remotes)
 install_github("tereom/estcomp")
-1use_course("https://github.com/ComunidadBioInfo/minicurso_ene_2021/raw/main/_material.zip")
+use_course("https://github.com/ComunidadBioInfo/minicurso_ene_2021/raw/main/_material.zip")
 ```
 
 4. ¡Listos para visualizar y arrear datos!

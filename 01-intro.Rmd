@@ -1,4 +1,4 @@
-# Analisis de datos con R
+# Analisis de datos con R {-}
 
 En este primer módulo aprenderemos a usar R para análisis de datos.
 

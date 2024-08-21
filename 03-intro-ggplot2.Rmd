@@ -40,9 +40,9 @@ La función `geom_point()` añade una capa de puntos, hay muchas funciones
 *geometrías* incluídas en `ggplot2`: `geom_line()`, `geom_boxplot()`, 
 `geom_histogram`,... Cada una acepta distintos argumentos para mapear las 
 variables en los datos a características estéticas de la gráfica. En el ejemplo 
-de arriba mapeamos `displ` al eje x, `prd_pt_mc` al eje y, pero `geom_point()` nos 
-permite representar más variables usando la forma, color y/o tamaño del punto. 
-Esta flexibilidad nos permite entender o descubrir patrones más interesantes en 
+de arriba mapeamos `displ` al eje x, `prd_pt_mc` al eje y. Sin embargo, con
+`geom_point()` podemos representar más de 2 variables usando la forma, color y/o tamaño del punto. 
+Esta flexibilidad nos permite descubrir patrones más interesantes en 
 los datos.
 
 ```{r plot_dispersion_color, fig.width = 5.5, fig.height = 4}
@@ -220,6 +220,10 @@ ggplot(airquality, aes(x = Solar.R, y = Ozone)) +
   geom_smooth(method = "lm")
 ```
 
+Notamos que la relación entre radiación solar y ozono es positiva cuando la 
+velocidad del viento es baja, sin embargo la pendiente de la recta disminuye 
+con la velocidad del viento. Al incluir una tercer variable al análisis (velocidad del
+viento) podemos entender mejor los datos.
 
 #### Ejercicio {-}
 

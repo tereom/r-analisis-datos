@@ -1,7 +1,6 @@
 --- 
 title: "Análisis de Datos con R"
 author: "Teresa Ortiz"
-date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 bibliography: [book.bib]
